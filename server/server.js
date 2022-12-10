@@ -1,31 +1,23 @@
 console.log('in server.js');
 
-
 let calculation = [];
 
 let calculations = [
-    {
-        numberOne: 4,
-        operator: '+',
-        numberTwo: 5,
-        sum:9
-    },
-    {
-        numberOne: 1,
-        operator: '+',
-        numberTwo: 3,
-        sum:4
-    }
+    //Dummy Data
+    // {
+    //     numberOne: 4,
+    //     operator: '+',
+    //     numberTwo: 5,
+    //     sum:9
+    // },
+    // {
+    //     numberOne: 1,
+    //     operator: '+',
+    //     numberTwo: 3,
+    //     sum:4
+    // }
 
 ]
-
-//math operations
-// function mathOperator(num1, num2) {
-//     if (operation === 'add')
-//     num1 + num2
-// }
-
-
 
 const express = require('express');
 
@@ -43,49 +35,50 @@ const PORT = 5004;
 // what are static assets? HTML/CSS/JS
 app.use(express.static('server/public'));
 
+
+// START OF POST ROUTE
 app.post ('/calculations', (req, res) => {
 let numberOne = req.body.numberOne
 let numberTwo = req.body.numberTwo
 let operator = req.body.operator
 let sum = 0
 
+
+//I came across the switch operator on the following site: https://www.programiz.com/javascript/examples/simple-calculator
+//Henri helped walk me through how to use it
+//I got it working for addition first...then added the other operators
+//On line 95 and below are other ways I had tried/collected to try and 
+//handle the operators...this one just looks so nice
 switch (operator) {
     case "+":
         sum = Number(numberOne) + Number(numberTwo)
     break;
     case "-":
-        sum Number(numberOne)
-
-}
-
+        sum = Number(numberOne) - Number(numberTwo)
+    break;
+    case "x":
+        sum = Number(numberOne) * Number(numberTwo)
+    break;
+    case "/":
+        sum = Number(numberOne) / Number(numberTwo)
+}//end switch operator
 
 calculation = {
 numberOne: numberOne,
 numberTwo: numberTwo,
 operator:operator,
 sum: sum
-}
+}//calculated the newest inputs (numbers and operators)
 
-calculations.push(calculation);
-})    
-
-
+calculations.push(calculation);//newest calculation gets pushed to my calculations array 
+})//  END OF POST ROUTE
 
 
-// app.post ('/calculations', (req, res) => {
-//     const n1=Number(req.body.num1)
-//     const n2=Number(req.body.num2)
-//     const add = n1 + n2
-//     //calculations.push(req.body);
-//     //res.sendStatus(201);
-//    res.send('the answer is' + add)
-// })
-
-
+// START OF GET ROUTE
 app.get('/calculations', (req, res) => {
     console.log('GET /calculations')
     res.send(calculations);
-})//end of GET
+})//END OF GET ROUTE
 
 
 app.listen(PORT, () => {
@@ -95,6 +88,23 @@ app.listen(PORT, () => {
 
 
 
+
+
+// / app.post ('/calculations', (req, res) => {
+    //     const n1=Number(req.body.num1)
+    //     const n2=Number(req.body.num2)
+    //     const add = n1 + n2
+    //     //calculations.push(req.body);
+    //     //res.sendStatus(201);
+    //    res.send('the answer is' + add)
+    // })
+    
+
+//math operations
+// function mathOperator(num1, num2) {
+//     if (operation === 'add')
+//     num1 + num2
+// }
 
 
 // app.post('/calculations', (req,res) => {

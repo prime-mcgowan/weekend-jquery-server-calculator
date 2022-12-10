@@ -1,16 +1,17 @@
 console.log('in client.js');
 
-let operator = "" //has to be a global variable
+let operator = "" //has to be a global variable so it 
+//can be called on whenever and NOT just tucked into one 
+//function
 
 $(document).ready(handleReady);
-
 
 
 function handleReady(){
     console.log('in handleReady Function')
     $('.button').on('click', function(){
-      operator=$(this).html();
-    })
+      operator=$(this).html(); 
+    })//this targets ALL my operator buttons
     $('#equalsButton').on('click',equalsButton );
     $('#clearButton').on('click', clearInputs);
     renderCalculations();
@@ -20,9 +21,6 @@ function equalsButton() {
     addCalculation();
     renderCalculations();
 }
-
-
-
 
 function addCalculation(){
 //get values from inputs:
