@@ -1,43 +1,29 @@
 console.log('in server.js');
 
+
+let calculation = [];
+
 let calculations = [
     {
-        num1: 4,
+        numberOne: 4,
         operator: '+',
-        num2: 5,
-        result:9
+        numberTwo: 5,
+        sum:9
+    },
+    {
+        numberOne: 1,
+        operator: '+',
+        numberTwo: 3,
+        sum:4
     }
+
 ]
 
 //math operations
-function mathOperator(num1, num2) {
-    if (operation === 'add')
-    num1 + num2
-}
-
-//app.post("add", function (req,res)
-//let num1 = parseInt(req.body.num1);
-//let num2 = parseInt(req.body.num2);
-//let result = num1 = num2;
-//res.send(????JSON.stringify(
-// {ans:ans}));
-
-
-//route sum
-
-// const num1 = parseInt(request.params.num1);
-// const num2 = parseInt(request.params.num2);
-// let result = {
-//     answer: num1 + num2
-// };
-// return result;
-
-
-
-
-
-
-
+// function mathOperator(num1, num2) {
+//     if (operation === 'add')
+//     num1 + num2
+// }
 
 
 
@@ -57,24 +43,43 @@ const PORT = 5004;
 // what are static assets? HTML/CSS/JS
 app.use(express.static('server/public'));
 
-// app.post('/calculations', (req,res) => {
-//     //send NEW calculations to the calculations array
-//     conosle.log('POST /calculations')
-//     calculations.push(req.body);
-//     res.sendStatus(201);
-// })//end of POST
-
 app.post ('/calculations', (req, res) => {
-    const n1=Number(req.body.num1)
-    const n2=Number(req.body.num2)
-    const add= n1 + n2
-    res.send('the answer is' + add)
-})
+let numberOne = req.body.numberOne
+let numberTwo = req.body.numberTwo
+let operator = req.body.operator
+let sum = 0
+
+switch (operator) {
+    case "+":
+        sum = Number(numberOne) + Number(numberTwo)
+    break;
+    case "-":
+        sum Number(numberOne)
+
+}
+
+
+calculation = {
+numberOne: numberOne,
+numberTwo: numberTwo,
+operator:operator,
+sum: sum
+}
+
+calculations.push(calculation);
+})    
 
 
 
 
-
+// app.post ('/calculations', (req, res) => {
+//     const n1=Number(req.body.num1)
+//     const n2=Number(req.body.num2)
+//     const add = n1 + n2
+//     //calculations.push(req.body);
+//     //res.sendStatus(201);
+//    res.send('the answer is' + add)
+// })
 
 
 app.get('/calculations', (req, res) => {
@@ -83,16 +88,35 @@ app.get('/calculations', (req, res) => {
 })//end of GET
 
 
-
-
-
-
-
-
-
-
-
-
 app.listen(PORT, () => {
     console.log('Server is running', PORT);
 })
+
+
+
+
+
+
+// app.post('/calculations', (req,res) => {
+//     //send NEW calculations to the calculations array
+//     conosle.log('POST /calculations')
+//     calculations.push(req.body);
+//     res.sendStatus(201);
+// })//end of POST
+
+//app.post("add", function (req,res)
+//let num1 = parseInt(req.body.num1);
+//let num2 = parseInt(req.body.num2);
+//let result = num1 = num2;
+//res.send(????JSON.stringify(
+// {ans:ans}));
+
+
+//route sum
+
+// const num1 = parseInt(request.params.num1);
+// const num2 = parseInt(request.params.num2);
+// let result = {
+//     answer: num1 + num2
+// };
+// return result;
