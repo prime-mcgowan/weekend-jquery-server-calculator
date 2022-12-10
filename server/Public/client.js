@@ -15,6 +15,7 @@ function handleReady(){
     $('#equalsButton').on('click',equalsButton );
     $('#clearButton').on('click', clearInputs);
     renderCalculations();
+    
 }
 
 function equalsButton() {
@@ -27,7 +28,6 @@ function addCalculation(){
 let newNumberOne = $('#numberOneInput').val();
 let newNumberTwo = $('#numberTwoInput').val();
 
-
 //make the object we send the server:
 let newCalculation = {
     numberOne: newNumberOne, //value of # being put in calculator
@@ -35,8 +35,8 @@ let newCalculation = {
     operator: operator
 }
 
-    $('#numberOneInput').val('');
-    $('#numberTwoInput').val('');       
+    // $('#numberOneInput').val('');
+    // $('#numberTwoInput').val('');       
 
 //creat POST route
 $.ajax({
@@ -61,7 +61,6 @@ function renderCalculations () {
     }).then((calculationsResponse) => {
         console.log('server sent us:', calculationsResponse);
         $('#storedProblemsAndAnswers').empty();
-      
         for (let calculations of calculationsResponse) {
             $('#results').empty()
             $('#results').append(`${calculations.sum}`)
@@ -72,7 +71,7 @@ function renderCalculations () {
             `)
         }
     })
-}
+}//end of renderCalculations function
 
 
 
