@@ -10,7 +10,27 @@ let calculations = [
 ]
 
 //math operations
-function mathOperator(num1, num2)
+function mathOperator(num1, num2) {
+    if (operation === 'add')
+    num1 + num2
+}
+
+//app.post("add", function (req,res)
+//let num1 = parseInt(req.body.num1);
+//let num2 = parseInt(req.body.num2);
+//let result = num1 = num2;
+//res.send(????JSON.stringify(
+// {ans:ans}));
+
+
+//route sum
+
+// const num1 = parseInt(request.params.num1);
+// const num2 = parseInt(request.params.num2);
+// let result = {
+//     answer: num1 + num2
+// };
+// return result;
 
 
 
@@ -37,12 +57,25 @@ const PORT = 5004;
 // what are static assets? HTML/CSS/JS
 app.use(express.static('server/public'));
 
-app.post('/calculations', (req,res) => {
-    //send NEW calculations to the calculations array
-    conosle.log('POST /calculations')
-    calculations.push(req.body);
-    res.sendStatus(201);
-})//end of POST
+// app.post('/calculations', (req,res) => {
+//     //send NEW calculations to the calculations array
+//     conosle.log('POST /calculations')
+//     calculations.push(req.body);
+//     res.sendStatus(201);
+// })//end of POST
+
+app.post ('/calculations', (req, res) => {
+    const n1=Number(req.body.num1)
+    const n2=Number(req.body.num2)
+    const add= n1 + n2
+    res.send('the answer is' + add)
+})
+
+
+
+
+
+
 
 app.get('/calculations', (req, res) => {
     console.log('GET /calculations')
