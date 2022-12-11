@@ -24,10 +24,11 @@ h1, #calculator {
 }
 
 #results {
-    color: rgb(56, 212, 56);
+    color:rgb(92, 181, 92);
     display:flex;
     font-weight:bolder;
     justify-content: center;
+    padding-top: 15px;
 }
 
 ul  {
