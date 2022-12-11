@@ -1,5 +1,38 @@
 
-/* #addition {
-    height:25px;
-    width: 25px;
-} */
+body {
+    background-color: palevioletred; 
+}
+h1, #calculator {
+    display: flex;
+    justify-content: center;
+}
+
+#numberOneInput, #numberTwoInput {
+    margin-right: 10px;
+}
+
+.button {
+    background-color: rgb(116, 196, 116);
+    font-weight: bolder;
+    margin-right: 10px;
+}
+
+#equalsButton, #clearButton {
+    background-color: rgb(116, 196, 116);
+    font-weight: bolder;
+    margin-right: 10px;
+}
+
+#results {
+    color: rgb(56, 212, 56);
+    display:flex;
+    font-weight:bolder;
+    justify-content: center;
+}
+
+ul  {
+    font-size: 30px;
+}
+
+
+
