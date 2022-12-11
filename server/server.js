@@ -1,6 +1,8 @@
 console.log('in server.js');
 
-let calculation = [];
+let calculation = []; //empty array the newest calculation will go and from 
+                      //here it gets pushed into my calculations array...
+                      //which will be rendered on the screen
 
 let calculations = [
     //Dummy Data
@@ -16,8 +18,7 @@ let calculations = [
     //     numberTwo: 3,
     //     sum:4
     // }
-
-]
+] //end of calcualations array
 
 const express = require('express');
 
@@ -48,7 +49,7 @@ let sum = 0
 //Henri helped walk me through how to use it
 //I got it working for addition first...then added the other operators
 //On line 95 and below are other ways I had tried/collected to try and 
-//handle the operators...this one just looks so nice
+//handle the operators.
 switch (operator) {
     case "+":
         sum = Number(numberOne) + Number(numberTwo)

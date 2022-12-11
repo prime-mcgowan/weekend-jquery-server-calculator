@@ -2,7 +2,7 @@ console.log('in client.js');
 
 let operator = "" //has to be a global variable so it 
 //can be called on whenever and NOT just tucked into one 
-//function
+//of the functions
 
 $(document).ready(handleReady);
 
@@ -30,15 +30,16 @@ let newNumberTwo = $('#numberTwoInput').val();
 
 //make the object we send the server:
 let newCalculation = {
-    numberOne: newNumberOne, //value of # being put in calculator
-    numberTwo: newNumberTwo,
-    operator: operator
+    numberOne: newNumberOne, //first number being put in calculator
+    numberTwo: newNumberTwo, //second number being put in calculator
+    operator: operator //operator that was clicked
 }
 
     // $('#numberOneInput').val('');
     // $('#numberTwoInput').val('');       
 
-//creat POST route
+//create POST route - new data has been created that needs to be 
+//sent to the server (sends the numbers and what type of math needs to be done)
 $.ajax({
     url: '/calculations',
     method: 'POST',
@@ -51,9 +52,10 @@ $.ajax({
 function clearInputs () {
     $('#numberOneInput').val('');
     $('#numberTwoInput').val('');
-}
+}//input values will be set back to empty
 
-
+//create GET route - need to be able to receive the new data (get 
+//the answer and the newest calculation added to the list of calculations)
 function renderCalculations () {
     $.ajax({
         url: '/calculations',
@@ -63,12 +65,14 @@ function renderCalculations () {
         $('#storedProblemsAndAnswers').empty();
         for (let calculations of calculationsResponse) {
             $('#results').empty()
-            $('#results').append(`${calculations.sum}`)
+            $('#results').append(`${calculations.sum}`) //from the 
+            //calculations array and I want just the sum/answer to render
             $('#storedProblemsAndAnswers').append(`
             <tr>
                 <td>${calculations.numberOne} ${calculations.operator} ${calculations.numberTwo} = ${calculations.sum}</td>
             </tr>
-            `)
+            `)//also from the calculations array and I want the entire math
+              //problem to render in my #storedProblemsAndAnswers "table"
         }
     })
 }//end of renderCalculations function
